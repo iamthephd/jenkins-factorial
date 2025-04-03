@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Stop any existing containers
-                sh 'docker stop $(docker ps -q --filter ancestor=factorial-api) || true'
+                sh 'docker stop factorial-api-instance'
                 
                 // Run the container in detached mode
                 sh 'docker rm factorial-api-instance'
