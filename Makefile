@@ -10,10 +10,10 @@ test:
 	docker run --rm $(IMAGE_NAME) pytest -v
 
 run:
-	docker run --rm -p 9000:9000 $(IMAGE_NAME)
+	docker run --name testing -p 9000:9000 $(IMAGE_NAME)
 
 stop:
-	docker stop $$(docker ps -q --filter ancestor=$(IMAGE_NAME)) || true
+	docker stop testing || true
 
 clean: stop
 	docker rmi $(IMAGE_NAME) || true
