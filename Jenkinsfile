@@ -28,6 +28,7 @@ pipeline {
                 sh 'docker stop $(docker ps -q --filter ancestor=factorial-api) || true'
                 
                 // Run the container in detached mode
+                sh 'docker rm factorial-api-instance'
                 sh 'docker run -d -p 9000:9000 --name factorial-api-instance factorial-api'
                 sh 'echo "Application deployed at http://localhost:9000"'
             }
